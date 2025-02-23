@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优选ip去重</title>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Toast</title>
+    <style>
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        #toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+    </style>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2,h6 {
+            color: #333;
+            margin: 5px;
+        }
+
+        #inputContainer {
+            margin-top: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        textarea,
+        #output {
+            width: 800px;
+            height: 300px;
+            box-sizing: border-box;
+            padding:8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #output {
+            margin-top: 5px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        #copyright {
+            margin-top: 10px;
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>优选ip去重  仅对#之前字符比对</h2>
+    <h6>❗😜纯js转换，还有疑虑可以保存源代码本地运行</h6>
+    <h3>优选ip源:</h3>
+    <div id="inputContainer">
+        <textarea id="txtInput" rows="10" cols="80"></textarea>
+    </div>
+    <button onclick="init()">初始化演示数据</button>
+    <button onclick="transform()">开始去重</button>
+    <button onclick="clearScreen()">清除屏幕</button>
+    <button onclick="copyContent()">拷贝结果</button>
+    <button onclick="saveAsTXT()">保存txt</button>
+    <h3>去重结果:</h3>
+    <textarea id="output" rows="10" cols="80" readonly></textarea>
+    <div id="copyright">
+        <p>© 2025 xxx All Rights Reserved.</p>
+    </div>
+    <div id="toast"></div>
+    <script>
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerHTML = message;
+            toast.className = "show";
+            setTimeout(function () {
+                toast.className = toast.className.replace("show", "");
+            }, 3000);
+        }
+        function init() {
+            let txt = `
+                portal.cloudflarepartners.com#CF家的【推荐】,
+                support.cloudflarewarp.com#CF家的【推荐1-1-1-1】,
+                developers.cloudflare.com#CF家的【推荐】,
+                workers.cloudflare.com#CF家的【推荐】workers.cloudflare.com,
+                pages.cloudflare.com#CF家的pages.cloudflare.com,
+                ns.cloudflare.com#CF家的【推荐】ns.cloudflare.com,
+
+                162.159.133.144#优选ip 香港1 ipv6,
+                162.159.143.4#优选ip  香港2 ipv6,
+                162.159.133.144#优选ip 香港1 ipv6,
+
+                time.is
+                ip.sb
+                fbi.gov
+
+                support.cloudflare.com
+                workers.cloudflare.com
+                support.cloudflarewarp.com
+                portal.cloudflarepartners.com
+                developers.cloudflare.com
+            `;
+
+            document.getElementById('txtInput').value = txt;
+        }
+
+        function transform() {
+            const txtInput = document.getElementById('txtInput').value;
+            const lines = txtInput.split('\n');
+            let currentGroup = null;
+            let set = new Set();
+            let allipsLen = 0;
+            let obj = {}
+           let  result = ''
+            for (const line of lines) {
+                let arr =line.trim().split('#')
+                let ip = arr[0]
+                let nameDesc = arr.slice(1)  
+                if (ip) {
+                    allipsLen++;
+                    result+=ip+(nameDesc.length?'#':'')+nameDesc+'\n'
+                    if (!set.has(ip)) {
+                        set.add(ip)
+                    } else {
+                        obj[ip] = obj[ip] ? obj[ip] + 1 : 1
+                    }
+                }
+            }
+            console.log('去重后节点\r',result);
+            console.log('已去除重复节点详情',obj);
+            showToast(`共${allipsLen}个优选ip，去重后${set.size}个节点，详情见控制台`)
+              document.getElementById('output').value = result;
+        }
+        function clearScreen() {
+            document.getElementById('txtInput').value = '';
+            document.getElementById('output').value = '';
+        }
+        function copyContent() {
+            const output = document.getElementById('output');
+            if(!output.value){
+                return alert('请先转化去重')
+            }
+            output.select();
+            document.execCommand('copy');
+            showToast('内容已复制到剪贴板！');
+        }
+        function saveAsTXT() {
+            if(!output.value){
+                return alert('请先转化去重')
+            }
+            const content = document.getElementById('output').value;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = '优选ip去重.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+
+    </script>
+</body>
+
+</html>
