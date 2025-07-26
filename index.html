@@ -305,13 +305,14 @@
 
         // 自定义分类保留频道
         const groupMaps = [
-            { name: '4K 8K', keywords: ['4K', "8K"] },
+
             { name: '央视', keywords: ['央视'] },
             { name: '卫视', keywords: ['卫视'] },
             { name: '少儿', keywords: ['少儿', "卡通", "动画", "动漫", "炫动"] },
             { name: '地方', keywords: ['地方'] },
             { name: '影视', keywords: ['影视', "熊猫", "CHC", "剧场", "影院"] },
             { name: '咪咕视频', keywords: ['咪咕'] },
+            { name: '4K 8K', keywords: ['4K', "8K"] },
             { name: '其他', keywords: [""] }
         ]
         const mygroupNames = groupMaps.map(g => g.name);
@@ -445,6 +446,8 @@
 
 
             console.log('已匹配重置频道分类 count:', count, 'channels.length:', channels.length);
+            console.log("channels", channels)
+
 
 
             channels.sort(function (a, b) {
@@ -517,7 +520,6 @@
                     return nameA.localeCompare(nameB);
                 });
 
-                // console.log("sorted channels:", currentGroupChannels)
 
 
                 let currentChannelNames = [...new Set(currentGroupChannels.map(channel => channel.name))];
