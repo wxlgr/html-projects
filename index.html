@@ -336,6 +336,13 @@
          */
         function parseM3UToChannels(m3uString = "") {
             if (!m3uString || typeof m3uString !== "string") return [];
+
+
+            // 添加深圳4k超高清
+            m3uString +=`
+             #EXTINF:-1,tvg-id="深圳卫视4" tvg-name="深圳卫视4" tvg-logo="https://epg.v1.mk/logo/深圳卫视4.png" group-title="4K",深圳4k超高清
+            https://livepull-tcms.sztv.com.cn:443/live/sz4Kpgm.m3u8
+            `
             const lines = m3uString
                 .trim()
                 .split('\n')
@@ -372,6 +379,9 @@
             channels = channels.filter(channel => {
                 return channel.source !== 'mgtv' && channel.source !== 'yhyx' && !channel.name.includes("咪咕") | !channel.name.includes("测试")
             })
+
+           
+         
 
             return channels;
         }
