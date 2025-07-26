@@ -311,7 +311,6 @@
             { name: '少儿', keywords: ['少儿', "卡通", "动画", "动漫", "炫动"] },
             { name: '地方', keywords: ['地方'] },
             { name: '影视', keywords: ['影视', "熊猫", "CHC", "剧场", "影院"] },
-            { name: '咪咕视频', keywords: ['咪咕'] },
             { name: '4K 8K', keywords: ['4K', "8K"] },
             { name: '其他', keywords: [""] }
         ]
@@ -369,9 +368,9 @@
                 }
             }
 
-            // 过滤无效mgtv 和yhyx  测试频道
+            // 过滤无效mgtv 和yhyx  测试、咪咕频道
             channels = channels.filter(channel => {
-                return channel.source !== 'mgtv' && channel.source !== 'yhyx' && !channel.name.includes("测试")
+                return channel.source !== 'mgtv' && channel.source !== 'yhyx' && !channel.name.includes("咪咕") | !channel.name.includes("测试")
             })
 
             return channels;
