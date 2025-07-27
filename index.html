@@ -328,6 +328,24 @@
             }
         }
 
+
+        // 去除name杂项
+        function processName(name = "") {
+            
+            name = name.toLocaleUpperCase().trim()
+            // const originName = name
+            let index = name.lastIndexOf("-")
+            if (index > 0) {
+                name = name.slice(0, index)
+                name = name.replace(/超清|高清|超高清|HD/ig, "")
+            }
+
+            // console.log("processName:",originName,"=>",name)
+            
+            return name
+        }
+
+
         /**
          * 将 M3U 格式的字符串解析为频道对象数组
          * @param {string} m3uString - M3U 格式的字符串
@@ -348,13 +366,14 @@
                 if (line.startsWith('#EXTINF:')) {
                     // 提取频道信息
                     const extinfLine = line;
-
-                    const nameMatch = extinfLine.match(/,\s*([^,].*?)\s*$/)     // 匹配频道名称
                     const groupMatch = extinfLine.match(/group-title="([^"]*)"/); // 匹配分组
                     const logoMatch = extinfLine.match(/tvg-logo="([^"]*)"/);     // 匹配Logo
 
+
+                    const name = extinfLine.slice(extinfLine.lastIndexOf(",") + 1)
+
                     currentChannel = {
-                        name: (nameMatch && nameMatch[1].trim()) || '',
+                        name:name,
                         group: (groupMatch && groupMatch[1]) || '',
                         logo: (logoMatch && logoMatch[1]) || ''
                     };
@@ -369,9 +388,13 @@
 
             // 过滤无效mgtv 和yhyx  咪咕、测试频道
             channels = channels.filter(channel => {
-                return channel.source !== 'mgtv' && channel.source !== 'yhyx' && !channel.name.includes("测试") | !channel.name.includes("咪咕")
+
+                const filters = ["mgtv","yhyx","咪咕","测试"]
+                return !filters.some(item=>channel.name.includes(item)||channel.source.includes(item))
             })
 
+            // 处理 频道名称杂项
+            channels.forEach(c=>c.name=processName(c.name))
             return channels;
         }
 
@@ -453,20 +476,13 @@
 
 
             const channelSoureces = [...new Set(channels.map(c => c.source))]
-            console.log("channels sourece", channelSoureces);
+            // console.log("channels sourece", channelSoureces);
             // console.table(JSON.parse(JSON.stringify(channels))  );
 
             groups = groups.map(g => {
 
                 let currentGroupChannels = channels.filter(c => c.group == g.name)
                 currentGroupChannels = currentGroupChannels.map(c => {
-                    c.name = c.name.toLocaleUpperCase()
-                    c.name = c.name.replace("HD", "")
-                    // 去掉末尾无关
-                    let lastINdex = c.name.lastIndexOf("-")
-                    if (lastINdex > 0) {
-                        c.name = c.name.substring(0, lastINdex)
-                    }
                     // 规范央视
                     if (c.name.startsWith("CCTV") && c.group == "央视") {
                         const targetName = normalizeCCTV(c.name)
@@ -698,7 +714,7 @@
 
                 // 自动追加深证超高清4K
                 const appendChannelLines = [
-                    `#EXTINF:-1,tvg-id="深圳卫视4" tvg-name="深圳卫视4" tvg-logo="https://epg.v1.mk/logo/深圳卫视4.png" group-title="4K",深圳4k超高清
+                    `#EXTINF:-1,tvg-id="深圳卫视4" tvg-name="深圳卫视4" tvg-logo="https://live.fanmingming.cn/tv/深圳卫视4K.png" group-title="4K",深圳卫视4K
 https://livepull-tcms.sztv.com.cn:443/live/sz4Kpgm.m3u8`,
                 ]
                 appendChannelLines.forEach(line => {
