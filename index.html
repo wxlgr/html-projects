@@ -4,242 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>肥羊直播源自定义频道 2.0</title>
-    <style>
-        :root {
-            --bg-color: #f4f4f4;
-            --primary-color: #4CAF50;
-            --secondary-color: #506f50;
-            --text-color: #333;
-            --border-color: #ccc;
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            min-width: 320px;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Segoe UI", sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            padding: 20px;
-            color: var(--text-color);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-
-        .box {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .box>div {
-            flex: 1 1 45%;
-        }
-
-        textarea {
-            width: 100%;
-            height: 250px;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            resize: none;
-            outline: none;
-            font-size: 14px;
-            box-shadow: var(--shadow);
-        }
-
-        textarea:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-        }
-
-        form {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        input[type="text"],
-        input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 14px;
-            box-shadow: var(--shadow);
-        }
-
-        input[type="text"]:focus,
-        input[type="file"]:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .buttons button {
-            flex: 1 1 120px;
-            min-width: 120px;
-            height: 40px;
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-
-        .buttons button:hover {
-            background-color: var(--primary-color);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .select {
-            margin-top: 20px;
-        }
-
-        h2 {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        .group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .group label {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 14px;
-        }
-
-        #confirm {
-            width: 100%;
-            padding: 10px;
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        #confirm:hover {
-            background-color: var(--primary-color);
-        }
-
-        @media (max-width: 768px) {
-            .box {
-                flex-direction: column;
-            }
-
-            .box>div {
-                flex: 1 1 100%;
-            }
-
-            textarea {
-                height: 200px;
-            }
-        }
-
-
-        .description {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 1rem 0;
-            padding: 0;
-        }
-
-        .description li {
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            padding: 5px;
-            font-size: 14px;
-            line-height: 1.5;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s, background-color 0.3s;
-        }
-
-        .description li:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-4px);
-        }
-
-        @media (max-width: 992px) {
-            .description li {
-                flex: 0 1 45%;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .description li {
-                flex: 0 1 100%;
-                font-size: 13px;
-            }
-
-            .box {
-                flex-direction: column;
-            }
-
-            .box>div {
-                flex: 1 1 100%;
-            }
-
-            textarea {
-                height: 100px;
-            }
-        }
-    </style>
+    <title>直播源自定义频道 3.0</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>肥羊直播源自定义频道 2.0</h1>
+        <h1>直播源自定义频道 3.0</h1>
         <ul class="description">
             <!-- 功能描述 -->
         </ul>
         <form>
-            <label>Your IP 地址:
-                <input type="text" id="yourIp" name="yourIp" value="http://192.168.31.3:35455"
-                    placeholder="http://192.168.31.3:35455" />
-            </label>
             <label>本地 M3U 文件:
                 <input type="file" id="fileInput" accept=".m3u,.m3u8" />
             </label>
@@ -247,16 +22,18 @@
         </form>
         <div class="box">
             <div>
-                <span>（肥羊）直播源m3u - 原始</span>
+                <span>直播源m3u - 原始</span>
                 <textarea id="inputTextarea" placeholder="请上传或粘贴 M3U 内容..."></textarea>
             </div>
             <div>
-                <span>（肥羊）直播源m3u - 自定义后</span>
+                <span>直播源m3u - 自定义后</span>
                 <textarea id="outputTextarea" readonly placeholder="处理后的 M3U 数据将显示在此..."></textarea>
             </div>
         </div>
 
-
+        <div class="group-rules">
+            <!--  -->
+        </div>
 
         <div class="processdata">
             <h2>数据操作</h2>
@@ -286,7 +63,6 @@
         let groups = []
         let lines = ""
 
-        let yourIp = 'http://192.168.31.3:35455';
 
         const fileInput = document.getElementById('fileInput');
         const inputTextarea = document.getElementById('inputTextarea');
@@ -296,24 +72,143 @@
         const downloadbtn = document.getElementById('downloadbtn');
 
 
-        const yourIpInput = document.querySelector('input[name="yourIp"]');
         const all = document.getElementById('all');
         const allnot = document.getElementById('allnot');
-        const confirm = document.getElementById('confirm');
+        const confirmBtn = document.getElementById('confirm');
         const groupContainer = document.querySelector('.group');
 
 
         // 自定义分类保留频道
-        const groupMaps = [
+        const defaultGroupMaps = [
             { name: '4K 8K', keywords: ['4K', "8K"] },
-            { name: '央视', keywords: ['央视'] },
+            { name: '央视', keywords: ['央视', "CCTV", "C"] },
             { name: '卫视', keywords: ['卫视'] },
             { name: '少儿', keywords: ['少儿', "卡通", "动画", "动漫", "炫动"] },
             { name: '地方', keywords: ['地方'] },
             { name: '影视', keywords: ['影视', "熊猫", "CHC", "剧场", "影院"] },
             { name: '其他', keywords: [""] }
         ]
+
+        const groupMaps = [...defaultGroupMaps];
         const mygroupNames = groupMaps.map(g => g.name);
+
+
+        function renderGroupRules() {
+            const ul = document.createElement('ul');
+            const div = document.querySelector('.group-rules');
+
+            const desc = document.createElement('div');
+            desc.innerHTML = `<h2>分组规则</h2>
+            <p>分组名称可以自定义，默认分组名称为：${mygroupNames.join('、')}</p>`;
+
+            const gbtns = document.createElement("div")
+            gbtns.innerHTML = `<button class="addGroup">添加分组</button>
+            <button class="resetGroup">重置分组</button>
+            `
+            div.appendChild(desc)
+            div.appendChild(gbtns)
+
+            groupMaps.slice().forEach((group, idx) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                   <button class="deleteBtn">X</button><span>分组${idx + 1}:</span> <input type="text" class="group-name-input" data-idx="${idx}" value="${group.name}" />
+                    <span><=关键字:</span><input type="text" class="group-keywords-input" data-idx="${idx}" value="${group.keywords.join(', ')}" />
+                `;
+                ul.appendChild(li);
+            });
+            div.appendChild(ul);
+
+            document.querySelector('.addGroup').addEventListener('click', function () {
+                if (groupMaps.length >= 10) {
+                    alert('最多只能添加10个分组');
+                    return;
+                }
+                const newIdx = groupMaps.length;
+                const newGroup = { name: `分组${newIdx + 1}`, keywords: [] };
+                groupMaps.push(newGroup);
+                mygroupNames.push(newGroup.name);
+
+                const li = document.createElement('li');
+                li.innerHTML = `
+                   <button class="deleteBtn">X</button><span>分组${newIdx + 1}:</span> <input type="text" class="group-name-input" data-idx="${newIdx}" value="${newGroup.name}" />
+                    <span><=关键字:</span><input type="text" class="group-keywords-input" data-idx="${newIdx}" value="" />
+                `;
+                ul.appendChild(li);
+
+                updateData();
+                updateViews();
+            });
+
+            document.querySelector('.resetGroup').addEventListener('click', function () {
+
+                if (confirm('确定要重置分组吗？这将删除所有自定义分组并恢复默认分组。')) {
+                    groupMaps.length = 0;
+                    mygroupNames.length = 0;
+
+                    defaultGroupMaps.forEach(g => {
+                        groupMaps.push(g);
+                        mygroupNames.push(g.name);
+                    });
+                    // 清空并重新渲染
+                    ul.innerHTML = '';
+                    groupMaps.slice().forEach((group, idx) => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                           <button class="deleteBtn">X</button><span>分组${idx + 1}:</span> <input type="text" class="group-name-input" data-idx="${idx}" value="${group.name}" />
+                            <span><=关键字:</span><input type="text" class="group-keywords-input" data-idx="${idx}" value="${group.keywords.join(', ')}" />
+                        `;
+                        ul.appendChild(li);
+                    });
+                    updateData();
+                    updateViews();
+                }
+            });
+            // 事件委托，监听删除按钮点击
+            ul.addEventListener('click', function (e) {
+                if (e.target.classList.contains('deleteBtn')) {
+                    const li = e.target.closest('li');
+                    const idx = Array.from(ul.children).indexOf(li);
+                    if (idx > -1) {
+                        groupMaps.splice(idx, 1);
+                        mygroupNames.splice(idx, 1);
+                        ul.removeChild(li);
+                        // 更新剩余输入框的 data-idx 属性
+                        Array.from(ul.children).forEach((child, newIdx) => {
+                            const nameInput = child.querySelector('.group-name-input');
+                            const keywordsInput = child.querySelector('.group-keywords-input');
+                            nameInput.setAttribute('data-idx', newIdx);
+                            keywordsInput.setAttribute('data-idx', newIdx);
+                            child.querySelector('span').textContent = `分组${newIdx + 1}:`;
+                        });
+                    }
+                    updateData();
+                    updateViews();
+                }
+            });
+
+            // 事件委托，监听输入变化
+            ul.addEventListener('input', function (e) {
+                if (e.target.classList.contains('group-name-input')) {
+                    const idx = e.target.getAttribute('data-idx');
+                    groupMaps[idx].name = e.target.value.trim();
+                    mygroupNames[idx] = e.target.value.trim();
+                }
+                if (e.target.classList.contains('group-keywords-input')) {
+                    const idx = e.target.getAttribute('data-idx');
+                    groupMaps[idx].keywords = e.target.value.split(',').map(s => s.trim()).filter(Boolean);
+                }
+
+                console.log('Updated groupMaps:', groupMaps);
+
+
+                // 刷新数据 更新视图
+                updateData();
+                updateViews();
+
+            });
+        }
+
+        renderGroupRules()
 
         init()
 
@@ -331,17 +226,18 @@
 
         // 去除name杂项
         function processName(name = "") {
-            
+
             name = name.toLocaleUpperCase().trim()
-            // const originName = name
+            const originName = name
             let index = name.lastIndexOf("-")
             if (index > 0) {
                 name = name.slice(0, index)
-                name = name.replace(/超清|高清|超高清|HD/ig, "")
-            }
 
-            // console.log("processName:",originName,"=>",name)
-            
+            }
+            name = name.replace(/超清|高清|超高清|HD|\..+/ig, "")
+
+            // console.log("processName:", originName, "=>", name)
+
             return name
         }
 
@@ -373,7 +269,7 @@
                     const name = extinfLine.slice(extinfLine.lastIndexOf(",") + 1)
 
                     currentChannel = {
-                        name:name,
+                        name: name,
                         group: (groupMatch && groupMatch[1]) || '',
                         logo: (logoMatch && logoMatch[1]) || ''
                     };
@@ -389,12 +285,12 @@
             // 过滤无效mgtv 和yhyx  咪咕、测试频道
             channels = channels.filter(channel => {
 
-                const filters = ["mgtv","yhyx","咪咕","测试"]
-                return !filters.some(item=>channel.name.includes(item)||channel.source.includes(item))
+                const filters = ["mgtv", "yhyx", "测试", "咪咕"]
+                return !filters.some(item => channel.name.includes(item) || channel.source.includes(item))
             })
 
             // 处理 频道名称杂项
-            channels.forEach(c=>c.name=processName(c.name))
+            channels.forEach(c => c.name = processName(c.name))
             return channels;
         }
 
@@ -413,8 +309,6 @@
             initGroups(channels);
         }
         function resetData() {
-            yourIp = 'http://192.168.31.3:35455';
-            yourIpInput.value = yourIp;
             inputTextarea.value = '';
             outputTextarea.value = '';
             fileInput.value = '';
@@ -436,7 +330,7 @@
                 };
             })
             console.log("groups.length", groups.length);
-            console.table(JSON.parse(JSON.stringify(groups)));
+            // console.table(JSON.parse(JSON.stringify(groups)));
 
 
             let count = 0;
@@ -486,7 +380,7 @@
                     // 规范央视
                     if (c.name.startsWith("CCTV") && c.group == "央视") {
                         const targetName = normalizeCCTV(c.name)
-                        console.log("normalizeCCTV:", c.name + " --> " + targetName)
+                        // console.log("normalizeCCTV:", c.name + " --> " + targetName)
                         c.name = normalizeCCTV(c.name)
                     }
                     return c
@@ -547,7 +441,7 @@
 
                         // 排序优先规则：bst → gptv
                         // const order = [ 'bst', 'gptv'];
-                        const order = ['gptv', 'nptv'];
+                        const order = ['gptv',"bst","migu"];
 
                         const sourceA = getSourceFromUrl(a)
                         const sourceB = getSourceFromUrl(b)
@@ -712,14 +606,7 @@
             inputTextarea.addEventListener('change', (e) => {
                 e.preventDefault();
 
-                // 自动追加深证超高清4K
-                const appendChannelLines = [
-                    `#EXTINF:-1,tvg-id="深圳卫视4" tvg-name="深圳卫视4" tvg-logo="https://live.fanmingming.cn/tv/深圳卫视4K.png" group-title="4K",深圳卫视4K
-https://livepull-tcms.sztv.com.cn:443/live/sz4Kpgm.m3u8`,
-                ]
-                appendChannelLines.forEach(line => {
-                    inputTextarea.value += "\n" + line
-                })
+
                 lines = inputTextarea.value
                 updateData()
                 updateViews();
@@ -738,7 +625,7 @@ https://livepull-tcms.sztv.com.cn:443/live/sz4Kpgm.m3u8`,
                 updateViews();
             });
 
-            confirm.addEventListener('click', (e) => {
+            confirmBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 if (!inputTextarea.value) {
                     alert('没有内容');
@@ -772,42 +659,17 @@ https://livepull-tcms.sztv.com.cn:443/live/sz4Kpgm.m3u8`,
 
             });
 
-            yourIpInput.addEventListener('change', (e) => {
-                e.preventDefault();
-                const newIp = e.target.value.trim();
-                yourIp = newIp;
-                if (newIp) {
-                    if (checkInputType(newIp) === 'invalid') {
-                        alert('请输入有效的IP或域名');
-                        return;
-                    }
-                    console.log('Updated yourIp:', yourIp);
-                }
-            });
         }
 
         async function generateM3UContent(selectedChannels) {
-            if (checkInputType(yourIpInput?.value) === 'invalid') {
-                alert('请输入有效的IP或域名');
-                outputTextarea.value = '';
-                return;
-            }
+
             const header = '#EXTM3U x-tvg-url="https://11.112114.xyz/fy.xml"\n\n';
             const infos = selectedChannels.map(channel => {
-                return `#EXTINF:-1 tvg-logo="${channel.logo}" group-title="${channel.group}", ${channel.name}\n${replaceUrl(channel.url)}\n`;
+                return `#EXTINF:-1 tvg-logo="${channel.logo}" group-title="${channel.group}", ${channel.name}\n${channel.url}\n`;
             }).join('\n') + '\n';
             return header + infos;
         }
-        function replaceUrl(url) {
-            if (!yourIp) {
-                console.error('yourIp is not set');
-                return url;
-            }
-            if (url.startsWith('http://') || url.startsWith('https://')) {
-                return url.replace(/https?:\/\/.*:35455/i, yourIp);
-            }
-            return url ?? "";
-        }
+
         function checkInputType(input) {
             const ipv4Regex = /^(https?:\/\/)?((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(:\d+)?$/;
             const domainRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?$/;
@@ -830,8 +692,9 @@ https://livepull-tcms.sztv.com.cn:443/live/sz4Kpgm.m3u8`,
             const descList = [
                 '上传或粘贴 M3U 文件，自动解析频道信息',
                 '自动去除yhyx、mgtv、测试等无效频道',
-                '合并频道并规格化央视频道',
-                '央视排序默认优选级gptv > bst',
+                '支持自定义分组名称和关键字',
+                '合并频道并规范化央视频道',
+                '央视排序默认优选级gptv > bst > migu',
                 '可勾选需要保存的分组, 点击确认生成m3u',
                 '响应式布局，适配 PC / 平板 / 手机'
             ]
