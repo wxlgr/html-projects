@@ -21,30 +21,29 @@ ul {
 /* === Base Styles === */
 body {
     background-color: var(--bg-color);
-    padding: 20px;
     color: var(--text-color);
 }
 
 .container {
     max-width: 1200px;
     min-width: 460px;
-    margin: auto;
+    margin:20px auto;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: var(--shadow);
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 /* === Typography === */
 h1 {
     text-align: center;
     font-size: 24px;
-    margin-bottom: 20px;
     color: var(--secondary-color);
 }
 
 h2 {
     font-size: 18px;
+    margin-top: 10px;
 }
 
 /* === Layout === */
@@ -64,7 +63,7 @@ textarea,
 input[type="text"],
 input[type="file"] {
     width: 100%;
-    padding: 10px;
+    padding: 4px 6px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 14px;
@@ -98,11 +97,10 @@ form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 15px;
 }
 
 .buttons button {
-    flex: 1 1 120px;
+    flex: 0 0 120px;
     min-width: 120px;
     height: 40px;
     background-color: var(--secondary-color);
@@ -128,25 +126,28 @@ form {
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 #confirm:hover {
     background-color: var(--primary-color);
 }
 
-/* === Groups & Rules === */
-.select {
-    margin-top: 20px;
-}
 
-.group {
+.group{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 10px;
 }
 
-.group label {
+.sourcesContainer .sources{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.group label{
     display: flex;
     align-items: center;
     gap: 5px;
@@ -162,17 +163,14 @@ form {
     cursor: pointer;
     max-width: fit-content;
     transition: background-color 0.3s, box-shadow 0.3s;
-
-
 }
 
-.group-rules .addGroup:hover {
+.group-rules button:hover {
     background-color: var(--primary-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .group-rules ul {
-    margin: 20px 0;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -228,7 +226,6 @@ form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 1rem 0;
     padding: 0;
 }
 
