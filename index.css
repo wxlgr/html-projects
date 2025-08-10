@@ -141,6 +141,7 @@ form {
 }
 
 .sourcesContainer .sources{
+   flex-wrap: wrap;
     display: flex;
     align-items: center;
     gap: 10px;

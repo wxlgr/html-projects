@@ -171,9 +171,13 @@ init()
 
 function extractSource(url) {
     try {
-        const path = new URL(url).pathname; // 获取路径部分
-        const segments = path.split('/').filter(Boolean); // 分割路径并过滤空值
-        return segments[0]; // 返回第一个路径段
+        const {pathname}= new URL(url); // 获取路径部分
+        console.log("pathname:", pathname)
+        
+        
+        const match = pathname.match(/\/([a-zA-Z]+)[\/\d]/i); // 匹配第一个斜杠后面的字母部分，直到下一个斜杠或数字
+        
+        return  match[1]??"未知"; 
     } catch (e) {
         return null;
     }
@@ -579,6 +583,8 @@ function initEvents() {
     inputTextarea.addEventListener('change', (e) => {
         if (!inputTextarea.value) {
             console.log('inputTextarea 没有内容');
+            resetData();
+            updateViews();
             return;
         }
         // console.log('inputTextarea 有内容，开始解析 M3U');
@@ -656,7 +662,7 @@ async function generateM3UContent(selectedChannels) {
 function renderSources() {
 
     if (!channelSoureces || channelSoureces.length === 0) {
-          sourcesContainer.innerHTML = ''; // 清空之前的内容
+        sourcesContainer.innerHTML = ''; // 清空之前的内容
         return;
     }
     sourcesContainer.innerHTML = ''; // 清空之前的内容
