@@ -2,3 +2,4 @@
 *.m3u
 .vscode/
 node_modules/
+test/
