@@ -219,6 +219,12 @@ function parseM3UToChannels(m3uString = "") {
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
 
+        if (line.startsWith('#EXTM3U')) {
+            // 忽略M3U头
+            continue;
+        }
+       
+
         if (line.startsWith('#EXTINF:')) {
             // 提取频道信息
             const extinfLine = line;
